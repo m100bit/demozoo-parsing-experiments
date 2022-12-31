@@ -88,8 +88,10 @@ sudo su -c "python3 csv.py" postgres > /dev/null
 echo -e "\033[0;32m .csv file was generated somewhere in /tmp.\033[0m"
 echo -e "\033[0;33m Moving it...\033[0m"
 sudo mv /tmp/prods.csv ~/demozoo
-echo -e "\033[0;33m ...and removing .sql file...\033[0m"
+echo -e "\033[0;33m ...removing .sql file...\033[0m"
 rm demozoo-export.sql
+echo -e "\033[0;33m ...and .csv script (it may cause problems)...\033[0m"
+rm csv.py
 echo -e "\033[0;32m  Done!\033[0m"
 echo ""
 
