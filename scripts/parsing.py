@@ -3,6 +3,7 @@ import pandas
 global LINK
 indicator, linkindicator, janewayindicator, ftpindicator = int(), int(), int(), int()
 
+open('id.txt', 'w').close() # clear previous id.txt file if exists
 data = pandas.read_csv('prods.csv')
 data.sort_values(data.columns[3],axis=0,inplace=True)
 for x in range(data.iloc[-1,3]):
@@ -10,7 +11,7 @@ for x in range(data.iloc[-1,3]):
 	indicator, janewayindicator, linkindicator, ftpindicator = 0, 0, 0, 0
 
 	for n in range(0,len(links)):
-		if links.iloc[n,4] == 't' and (links.iloc[n,1] == 'SceneOrgFile' or links.iloc[n,1] == 'FujiologyFile' or links.iloc[n,1] == 'AmigascneFile' or links.iloc[n,1] == 'ModlandFile' or links.iloc[n,2].startswith('http://csdb.dk/') or links.iloc[n,2].startswith('http://www.csdb.dk') or links.iloc[n,2].startswith('https://www.csdb.dk') or links.iloc[n,2].startswith('http://aminet.net') or links.iloc[n,2].startswith('https://defacto2.net') or links.iloc[n,2].startswith('http://defacto2.net') or links.iloc[n,2].startswith('https://amp.dascene.net') or links.iloc[n,2].startswith('https://csdb.dk') or links.iloc[n,2].startswith('https://hvsc.csdb.dk') or links.iloc[n,2].startswith('https://files.zxdemo.org') or links.iloc[n,2].startswith('http://hvsc.csdb.dk') or links.iloc[n,2].startswith('https://media.demozoo.org')):
+		if links.iloc[n,4] == 't' and (links.iloc[n,1] == 'SceneOrgFile' or links.iloc[n,1] == 'FujiologyFile' or links.iloc[n,1] == 'AmigascneFile' or links.iloc[n,1] == 'ModlandFile' or links.iloc[n,2].startswith('http://csdb.dk/') or links.iloc[n,2].startswith('http://www.csdb.dk') or links.iloc[n,2].startswith('https://www.csdb.dk') or links.iloc[n,2].startswith('http://aminet.net') or links.iloc[n,2].startswith('https://defacto2.net') or links.iloc[n,2].startswith('http://defacto2.net') or links.iloc[n,2].startswith('https://amp.dascene.net') or links.iloc[n,2].startswith('http://amp.dascene.net') or links.iloc[n,2].startswith('https://csdb.dk') or links.iloc[n,2].startswith('https://hvsc.csdb.dk') or links.iloc[n,2].startswith('https://files.zxdemo.org') or links.iloc[n,2].startswith('http://hvsc.csdb.dk') or links.iloc[n,2].startswith('https://media.demozoo.org')):
 			indicator = 0 # base common links checker; 1 == no common links
 			break
 		else:
