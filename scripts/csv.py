@@ -17,7 +17,8 @@ cursor = con.cursor() #reconnecting to the new database
 
 os.system('touch /tmp/prods.csv')
 #cursor.execute("COPY productions_productionlink TO '/tmp/prods.csv' WITH CSV HEADER;") #copying table to the file
-cursor.execute("DROP TABLE IF EXISTS temp;")
-cursor.execute("CREATE TABLE temp AS SELECT * FROM productions_productionlink LEFT JOIN (SELECT tag_id, object_id, content_type_id FROM taggit_taggeditem) taggit ON productions_productionlink.production_id = taggit.object_id;") # joining prods and tags
-cursor.execute("DELETE FROM temp WHERE production_id IN (SELECT production_id FROM temp WHERE tag_id = 500);") # removing all "lost" prods
-cursor.execute("COPY temp TO '/tmp/prods.csv' WITH CSV HEADER;") # copying table to the file
+cursor.execute("DROP TABLE IF EXISTS demozoo_temp;")
+cursor.execute("CREATE TABLE demozoo_temp AS SELECT * FROM productions_productionlink LEFT JOIN (SELECT tag_id, object_id, content_type_id FROM taggit_taggeditem) taggit ON productions_productionlink.production_id = taggit.object_id;") # joining prods and tags
+cursor.execute("DELETE FROM demozoo_temp WHERE production_id IN (SELECT production_id FROM demozoo_temp WHERE tag_id = 500);") # removing all "lost" prods
+cursor.execute("DELETE FROM demozoo_temp WHERE production_id IN (SELECT production_id FROM demozoo_temp WHERE tag_id = 5682);") # removing all "lost-ish' prods
+cursor.execute("COPY demozoo_temp TO '/tmp/prods.csv' WITH CSV HEADER;") # copying table to the file
