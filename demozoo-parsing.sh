@@ -87,7 +87,7 @@ yes | gunzip demozoo-export.sql.gz
 echo -e "\033[0;32m File has been unpacked!"
 
 echo -e "\033[0;33mScript that will copy needed table to the .csv file will be executed.\033[0m"
-echo -e "\033[0;31mPLEASE MAKE SURE YOU DON'T HAVE SOMETHING IMPORTANT IN THE DATABASE CALLED \033[0mdemozoo_test \033[0;31mIN POSTGRESQL!\033[0m"
+echo -e "\033[0;31mPLEASE MAKE SURE YOU DON'T HAVE SOMETHING IMPORTANT IN DATABASES CALLED \033[0mdemozoo_test \033[0;31mAND \033[0mdemozoo_temp \033[0;31mIN POSTGRESQL!\033[0m"
 read -p "Press Enter to continue..."
 echo -e "\033[0;33mExecuting script... This might take a few minutes. Open Demozoo and watch your favourite demos while waiting.\033[0m"
 sudo su postgres -c "python3 csv.py" > /dev/null
